@@ -1,8 +1,7 @@
 # pywrapfst
 
-Fork of the official OpenFst python wrapper specially designed for the
-[beer](https://github.com/beer-asr/beer) framework . Contrary to the
-original **pywrapfst**, this distribution.
+Fork of the official [OpenFst python wrapper](http://www.openfst.org/twiki/bin/view/FST/PythonExtension)
+ specially designed for the [beer](https://github.com/beer-asr/beer) framework .
 
 
 # Requirements
@@ -13,8 +12,7 @@ In order to install **pywrapfst** the following tools are required:
 * [Cython](http://cython.org)
 * [OpenFst](http://www.openfst.org/twiki/bin/view/FST/WebHome)
 installed with the *far* extension. When installing OpenFst, do NOT
-install the *python* extension: this version of *pywrapfst* should be
-used instead.
+install the *python* extension !
 
 Though not required, we strongly recommend the use of the
 [Anaconda](https://docs.anaconda.com/anaconda/) python distribution as
