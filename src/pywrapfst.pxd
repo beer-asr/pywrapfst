@@ -550,3 +550,12 @@ cdef class FarWriter(object):
   cpdef bool error(self)
 
   cpdef string far_type(self)
+
+
+## BEER extension ##
+
+cdef extern from "obsfst.h" nogil:
+
+    cdef fst.FstClass* CreateObsFst(const double*, const int,
+        const int, fst.SymbolTable*, fst.SymbolTable*)
+

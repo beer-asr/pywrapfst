@@ -1,7 +1,8 @@
-from distutils.core import setup, Extension
 from Cython.Build import cythonize
-import sys
+from distutils.core import setup, Extension
+import numpy as np
 import os
+import sys
 
 exts = cythonize(
     Extension('pywrapfst',
@@ -9,7 +10,7 @@ exts = cythonize(
         language='c++',
         extra_compile_args=['-std=c++11'],
         libraries=['fst', 'fstscript', 'fstfar', 'fstfarscript'],
-        include_dirs=[os.path.join(sys.prefix, 'include')]
+        include_dirs=[os.path.join(sys.prefix, 'include'), np.get_include()]
     ),
     include_path=['src'],
 )

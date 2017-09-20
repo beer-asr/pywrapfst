@@ -4533,3 +4533,27 @@ fst.FLAGS_fst_error_fatal = False
 @atexit.register
 def _reset_fst_error_fatal():
   fst.FLAGS_fst_error_fatal = _fst_error_fatal_old
+
+
+## BEER extension ##
+
+def ObsFst(double [:,:] data, _SymbolTable isyms, _SymbolTable osyms):
+    '''Create an Observation FST.
+
+    Args:
+        data (:class:`np.ndarray`): The log-likelihood of the
+            observations as a N x K matrix where N is the number of
+            observations and K is the number of states in the model.
+        isyms (fst.SymbolTable): Input symbol table.
+        osyms (fst.SymbolTable): Output symbol table.
+
+    Returns:
+        (:class:`fst.Fst`): The FST representing the observations.
+
+    '''
+    cdef FstClass_ptr tfst = CreateObsFst(&data[0, 0], data.shape[0], data.shape[1],
+        isyms._table, osyms._table)
+    cdef _Fst ofst = _Fst.__new__(_Fst)
+    ofst._fst.reset(tfst)
+    return ofst
+
